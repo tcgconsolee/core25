@@ -5,14 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="../static/dashboard.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap"
         rel="stylesheet">
-
+      <link rel="icon" type="image/x-icon" href="../static/imgs/logo.png">
     <style>
-        /* Toggle mechanism */
         .content-section {
             display: none;
             flex: 1;
@@ -46,7 +45,6 @@
             color: #aaa;
         }
 
-        /* smooth fade */
         .content-section {
             opacity: 0;
             transition: opacity 0.25s ease;
@@ -59,6 +57,7 @@
 </head>
 
 <body>
+  <div class="load"><p>first rule of fightclub, never talk about fightclub</p></div>
     <div class="sidebar">
         <div class="icon active" data-target="home">🏠</div>
         <div class="icon" data-target="inbox">💬</div>
@@ -68,11 +67,10 @@
     </div>
 
     <div class="main">
-        <!-- HOME SECTION -->
         <div class="content-section active" id="home">
             <header>
                 <div class="title">
-                    <h1>Q8-C3D9E2</h1>
+                    <h1>{{ current_user.username }}</h1>
                     <span class="shield">🛡️ 50</span>
                     <div class="alias">alias ✎</div>
                 </div>
@@ -187,13 +185,11 @@
             </div>
         </div>
 
-        <!-- SETTINGS SECTION -->
         <div class="content-section" id="settings">
             <div class="settings-page">
                 <h1>Settings</h1>
 
                 <div class="settings-layout">
-                    <!-- Left Column -->
                     <div class="settings-left">
                         <div class="setting-card">
                             <h2>Change Password</h2>
@@ -224,7 +220,6 @@
                         </div>
                     </div>
 
-                    <!-- Right Column -->
                     <div class="settings-right">
                         <div class="setting-card small">
                             <h3>Data Purge</h3>
@@ -253,11 +248,9 @@
         </div>
 
 
-        <!-- ===== FEED SECTION ===== -->
         <section id="feed" class="content-section">
             <div class="feed-container">
 
-                <!-- Left Feed Sidebar -->
                 <aside class="feed-left">
                     <h2>Feed</h2>
                     <nav class="feed-nav">
@@ -283,12 +276,11 @@
                     </div>
                 </aside>
 
-                <!-- Middle Feed Content -->
                 <div class="feed-middle">
                     <div class="feed-banner">
-                        <img src="./imgs/loki.png" alt="">
+                        <img src="../static/imgs/loki.png" alt="">
                         <div class="feed-user">
-                            <img src="./imgs/user.png" alt="">
+                            <img src="../static/imgs/user.png" alt="">
                             <h1>l0k1</h1>
                         </div>
                         <button class="create-article">+ Create article</button>
@@ -296,7 +288,7 @@
 
                     <div class="feed-post">
                         <p class="post-id">Q8-C3D9E2 <span>🕒 9:50</span></p>
-                        <img src="./imgs/banner.png" alt="">
+                        <img src="../static/imgs/banner.png" alt="">
                         <p class="post-text">
                             Thousands gathered in the downtown district today for the largest organized demonstration
                             this quarter...
@@ -304,7 +296,6 @@
                     </div>
                 </div>
 
-                <!-- Right Feed Sidebar -->
                 <aside class="feed-right">
                     <button class="donate-btn">Donate</button>
 
@@ -329,16 +320,13 @@
         </section>
 
 
-        <!-- CALENDAR SECTION -->
         <div class="main calendar-page content-section" id="calendar">
-            <!-- top search bar -->
             <div class="calendar-topbar">
                 <input type="text" placeholder="enter [eventname] to search..." class="calendar-search">
                 <button class="calendar-search-btn">Search event</button>
                 <button class="calendar-add">+</button>
             </div>
 
-            <!-- main calendar + side events -->
             <div class="calendar-layout">
                 <div class="calendar-grid">
                     <div class="weekday">mon</div>
@@ -349,7 +337,6 @@
                     <div class="weekday">sat</div>
                     <div class="weekday">sun</div>
 
-                    <!-- Example days -->
                     <div class="day dim">29</div>
                     <div class="day dim">30</div>
                     <div class="day">1</div>
@@ -412,7 +399,6 @@
     <section id="inbox" class="content-section">
   <div class="inbox-wrap">
 
-    <!-- Left: Inbox list -->
     <aside class="inbox-list">
       <div class="inbox-header">
         <h2>Inbox</h2>
@@ -423,15 +409,6 @@
       </div>
 
       <div class="conversations" id="conversations">
-        <!-- Conversation items are inserted by JS; sample markup shown for reference -->
-        <!--
-        <div class="conv-item unread" data-id="q8-1f8c3a">
-          <div class="conv-id">Q8-1F8C3A</div>
-          <div class="conv-snippet">The package moved North an hour ago...</div>
-          <div class="time">5:26 PM</div>
-          <div class="badge">1</div>
-        </div>
-        -->
       </div>
 
       <div class="inbox-footer">
@@ -439,7 +416,6 @@
       </div>
     </aside>
 
-    <!-- Right: Chat view -->
     <main class="chat-view">
       <header class="chat-header">
         <div class="chat-title">
@@ -453,7 +429,6 @@
       </header>
 
       <div class="chat-body" id="chat-body" tabindex="0">
-        <!-- messages inserted by JS -->
       </div>
 
       <div class="chat-input">
@@ -472,7 +447,6 @@
             });
         }
 
-        // Icon switch mechanism
         const icons = document.querySelectorAll('.sidebar .icon');
         const sections = document.querySelectorAll('.content-section');
 
@@ -487,7 +461,6 @@
                 });
             });
         });
-        // ===== Inbox functionality & seeded messages =====
 (() => {
   const conversationsData = [
     {
@@ -580,7 +553,6 @@
     conv.messages.forEach(m => {
       appendMessage(m.who === 'me' ? 'right' : 'left', m.text);
     });
-    // scroll to bottom
     chatBody.scrollTop = chatBody.scrollHeight;
   }
 
@@ -601,12 +573,10 @@
     chatBody.scrollTop = chatBody.scrollHeight + 200;
   }
 
-  // send message from input
   sendBtn.addEventListener('click', () => {
     const text = messageInput.value.trim();
     if (!text) return;
     appendMessage('right', text);
-    // update conversation data
     const conv = conversationsData.find(c => c.id === currentConvId);
     conv.messages.push({ who: 'me', text });
     messageInput.value = '';
@@ -617,7 +587,6 @@
     if (e.key === 'Enter') sendBtn.click();
   });
 
-  // simple simulated reply (for demo)
   function simulateReply(conv) {
     setTimeout(() => {
       const replies = [
@@ -638,7 +607,6 @@
     }, 700 + Math.random() * 900);
   }
 
-  // tabs
   let currentFilter = 'all';
   document.querySelectorAll('.tab').forEach(t => {
     t.addEventListener('click', () => {
@@ -649,12 +617,23 @@
     });
   });
 
-  // init
   renderConversationList();
   openConversation(currentConvId);
 
 })();
-
+setTimeout(() => {
+  document.getElementsByClassName("load")[0].style.display="none"
+}, 5000);
+document.querySelectorAll(".day").forEach(obj => {
+  obj.style.border="none"
+  obj.addEventListener("click", () => {
+    if(obj.style.border=="none") {
+      obj.style.border="#fff 1px solid"
+    } else {
+      obj.style.border="none"
+    }
+  })
+})
     </script>
 </body>
 

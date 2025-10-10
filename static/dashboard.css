@@ -84,12 +84,12 @@ header {
   background-color: #2b2b2b;
 }
 .alerts .card {
-  flex: 1;                          /* cards stretch to equal height */
+  flex: 1;                         
   display: flex;
   flex-direction: column;
-  justify-content: center;          /* 👈 center heading & text together */
-  align-items: flex-start;          /* keep text aligned to the left */
-  gap: 0rem;                    /* space between heading & paragraph */
+  justify-content: center;        
+  align-items: flex-start;         
+  gap: 0rem;                  
 }
 .content {
   display: grid;
@@ -172,7 +172,7 @@ header {
   border-radius: 8px;
 }
 .calendar-sec {
-  justify-content: space-between; /* 👈 spaces calendar & bars nicely */
+  justify-content: space-between; 
 }
 
 .calendar,
@@ -185,7 +185,7 @@ header {
 }
 
 .calendar {
-  flex: 1; /* 👈 makes calendar take equal height with security bars */
+  flex: 1; 
   margin-bottom: 1rem;
 }
 
@@ -248,7 +248,6 @@ header {
 .fill.low {
   background: #a11;
 }
-/* ===== Calendar Page ===== */
 .calendar-page {
   display: flex;
   flex-direction: column;
@@ -256,11 +255,10 @@ header {
   padding: 2rem;
   background: #000;
   color: #fff;
-  overflow: hidden; /* prevent content spill */
+  overflow: hidden; 
   max-height: 100vh;
 }
 
-/* ─── Topbar ─────────────────────────── */
 .calendar-topbar {
   display: flex;
   align-items: center;
@@ -305,7 +303,6 @@ header {
   flex-shrink: 0;
 }
 
-/* ─── Main layout ─────────────────────── */
 .calendar-layout {
   display: grid;
   grid-template-columns: 2.3fr 1fr;
@@ -314,7 +311,6 @@ header {
   overflow: hidden;
 }
 
-/* ─── Calendar Grid ───────────────────── */
 .calendar-grid {
   background: #0a0a0a;
   border-radius: 10px;
@@ -363,11 +359,10 @@ header {
   overflow: hidden;
 }
 
-/* ─── Right Event Cards ───────────────── */
 .calendar-events {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* center vertically */
+  justify-content: center; 
   gap: 1.5rem;
   overflow-y: auto;
   padding-right: 0.5rem;
@@ -391,7 +386,6 @@ header {
   color: #bbb;
   line-height: 1.4;
 }
-/* ===== SETTINGS PAGE ===== */
 .settings-page {
   display: flex;
   flex-direction: column;
@@ -444,7 +438,6 @@ header {
   color: #aaa;
 }
 
-/* ─── Right Column Toggles ─────────────── */
 .toggle-row {
   background: #111;
   display: flex;
@@ -456,7 +449,6 @@ header {
   margin-top: 1rem;
 }
 
-/* ─── Switch Styling ─────────────── */
 .switch {
   position: relative;
   display: inline-block;
@@ -499,7 +491,6 @@ input:checked + .slider {
 input:checked + .slider:before {
   transform: translateX(20px);
 }
-/* ===== FEED PAGE ===== */
 #feed {
   height: 100%;
   display: flex;
@@ -517,7 +508,6 @@ input:checked + .slider:before {
   padding: 1rem;
 }
 
-/* Left column */
 .feed-left {
   background: #0b0b0b;
   border-radius: 10px;
@@ -636,7 +626,6 @@ input:checked + .slider:before {
   margin-left: 0.5rem;
 }
 
-/* Right column */
 .feed-right {
   background: #0b0b0b;
   border-radius: 10px;
@@ -684,14 +673,12 @@ input:checked + .slider:before {
 .feed-stats .online {
   color: #2ecc71;
 }
-/* ===== INBOX SECTION STYLES ===== */
 .content-section#inbox { display: none; position: absolute; height: 90vh;width:96vw;left:4vw;top:50%;transform:translateY(-50%) }
 .content-section#inbox.active { display: block; }
 
-/* container layout */
 .inbox-wrap {
   display: flex;
-  height: calc(100vh - 4rem); /* adjust to your header paddings if any */
+  height: calc(100vh - 4rem);
   gap: 1rem;
   padding: 1rem;
   color: #ddd;
@@ -729,7 +716,6 @@ input:checked + .slider:before {
 }
 .tab.active { background:#e20000; color:#fff; }
 
-/* conversation list */
 .conversations {
   overflow-y: auto;
   flex: 1;
@@ -768,11 +754,9 @@ input:checked + .slider:before {
 }
 .conv-item.unread { box-shadow: inset 0 0 0 2px rgba(226,0,0,0.06); }
 
-/* footer */
 .inbox-footer { margin-top: 10px; display:flex; justify-content:space-between; align-items:center; color:#9a9a9a; font-size:0.85rem; padding-top:6px; border-top:1px solid #151515; }
 .online-dot { display:inline-block; width:10px; height:10px; background:#00c853; border-radius:50%; margin-left:8px; }
 
-/* chat view */
 .chat-view {
   flex: 1;
   display:flex;
@@ -803,7 +787,6 @@ input:checked + .slider:before {
   cursor: pointer;
 }
 
-/* messages area */
 .chat-body {
   flex: 1;
   padding: 26px 40px;
@@ -814,7 +797,6 @@ input:checked + .slider:before {
   background: transparent;
 }
 
-/* bubble base */
 .msg {
   max-width: 65%;
   padding: 12px 16px;
@@ -826,7 +808,6 @@ input:checked + .slider:before {
   word-wrap: break-word;
 }
 
-/* left = other, right = me */
 .msg.left {
   background: rgba(255,255,255,0.06);
   color: #e6e6e6;
@@ -845,16 +826,12 @@ input:checked + .slider:before {
   border-bottom-right-radius: 12px;
 }
 
-/* message group small metadata */
 .msg-meta { font-size:0.7rem; color:#9a9a9a; margin-top:6px; display:block; }
 
-/* small compact messages (as in screenshot) */
 .bubble-compact { padding:10px 16px; border-radius:20px; }
 
-/* grouped alignment to create flow */
 .msg-row { display:flex; flex-direction:column; gap:8px; }
 
-/* input bar */
 .chat-input {
   display:flex;
   gap:8px;
@@ -886,10 +863,54 @@ input:checked + .slider:before {
   color:#fff; font-size:16px; cursor:pointer;
 }
 
-/* small screens fallback */
 @media (max-width: 900px) {
   .inbox-wrap { flex-direction: column; height: auto; }
   .inbox-list { width: 100%; order: 2; }
   .chat-view { order: 1; }
   .chat-body { padding: 18px; }
+}
+.load {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  animation: fadeout 2s forwards;
+  animation-delay: 3s;
+  font-size: 3vw;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+.load p {
+  animation: fadein 2s forwards;
+  animation-delay: 1s;
+  opacity: 0;
+}
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    99.9% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+    99.9% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
 }

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: 'Source Sans 3', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 30px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 40px;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+        .input-container {
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .input-container input {
+            background-color: #1c1c1c;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 8px 0;
+            color: white;
+            font-size: 16px;
+        }
+        .input-container button {
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .input-container button:hover {
+            background-color: #666;
+        }
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #444;
+        }
+        table th {
+            background-color: #222;
+            font-size: 18px;
+        }
+        table td {
+            background-color: #1c1c1c;
+            font-size: 16px;
+        }
+        .delete-btn {
+            color: red;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .delete-btn:hover {
+            text-decoration: underline;
+        }
+        .broadcast-container {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+        }
+        .broadcast-container input {
+            padding: 12px;
+            background-color: #1c1c1c;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+        }
+        .flash {
+            background-color: #333;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .flash.success {
+            background-color: #4CAF50;
+        }
+        .flash.error {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <span>Admin Dashboard</span>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="flash success">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="input-container">
+        <form method="POST">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="uname" value="{{ request.form.get('uname') }}" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="psw" required><br>
+
+            <label for="admin">Admin?</label>
+            <input type="checkbox" id="admin" name="is_admin" {% if request.form.get('is_admin') %} checked {% endif %}>
+
+            <button class="button" type="submit">Add</button>
+        </form>
+    </div>
+
+    <h3>All Users</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Admin</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ "Yes" if user.is_admin else "No" }}</td>
+                <td>
+                    {% if user.id != current_user.id %}
+                    <a href="{{ url_for('delete_user', user_id=user.id) }}" class="delete-btn">Delete</a>
+                    {% else %}
+                    (You)
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="broadcast-container">
+        <label for="broadcast">Tether Broadcast</label>
+        <input type="text" id="broadcast" name="broadcast">
+        <button class="button">Send</button>
+    </div>
+</div>
+
+</body>
+</html>

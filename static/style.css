@@ -253,7 +253,7 @@ p {
     display: none;
     opacity: 0;
 }
-.blog-loginpage input[type="text"] {
+.blog-loginpage input[type="text"],.blog-loginpage input[type="password"] {
     border: none;
     background: rgba(0,0,0,0.8);
     width: 30vw;
