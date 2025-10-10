@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Toggle mechanism */
+        .content-section {
+            display: none;
+            flex: 1;
+            overflow: hidden;
+              position: absolute;
+            top: 0vh;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .sidebar .icon.active {
+            background: #e20000;
+            color: white;
+            border-radius: 8px;
+            padding: 0.2rem 0.4rem;
+            opacity: 1;
+        }
+
+        .settings,
+        .stats {
+            background: #111;
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            font-size: 1.2rem;
+            color: #aaa;
+        }
+
+        /* smooth fade */
+        .content-section {
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .content-section.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="icon active" data-target="home">🏠</div>
+        <div class="icon" data-target="inbox">💬</div>
+        <div class="icon" data-target="feed">📰</div>
+        <div class="icon" data-target="settings">⚙️</div>
+        <div class="icon" data-target="calendar">📅</div>
+    </div>
+
+    <div class="main">
+        <!-- HOME SECTION -->
+        <div class="content-section active" id="home">
+            <header>
+                <div class="title">
+                    <h1>Q8-C3D9E2</h1>
+                    <span class="shield">🛡️ 50</span>
+                    <div class="alias">alias ✎</div>
+                </div>
+                <button class="copy-btn" onclick="copyID()">Copy ID</button>
+            </header>
+            <div class="content">
+                <div class="alerts">
+                    <div class="card">
+                        <h3>Check-in Alert</h3>
+                        <p>Leader M-02 has failed to check-in.<br>OPSEC Warning: Stand By for 72 hours</p>
+                    </div>
+                    <div class="card">
+                        <h3>Data Reminder</h3>
+                        <p>Sensitive documents in 'Project Hydra' folder have not been accessed in 48
+                            hrs.<br>Auto-delete scheduled in 2 hours</p>
+                    </div>
+                    <div class="card">
+                        <h3>Security Check</h3>
+                        <p>New contact <span class="highlight">Q8-1F8C3A</span> has not had their key verified.<br>DO
+                            NOT share sensitive data</p>
+                    </div>
+                </div>
+
+                <div class="notifications">
+                    <h2>Incoming Notifications</h2>
+                    <div class="notif-item">
+                        <p>New update in [<span class="highlight">Channel_3</span>] <i>just now</i></p>
+                        <button class="arrow-btn">➜</button>
+                    </div>
+                    <div class="notif-item">
+                        <p>You have 1 new unread message from [<span class="highlight">Q8-5A7F08</span>] <i>12 minutes
+                                ago</i></p>
+                        <button class="arrow-btn">➜</button>
+                    </div>
+                    <div class="notif-item">
+                        <p>You have 4 new unread messages from [<span class="highlight">Q8-9B2E4D</span>] <i>2 hours
+                                ago</i></p>
+                        <button class="arrow-btn">➜</button>
+                    </div>
+                    <div class="notif-item">
+                        <p>[<span class="highlight">Q8-1F8C3A</span>] has not been verified yet and has sent you a
+                            message <i>3 hours ago</i></p>
+                        <button class="arrow-btn">➜</button>
+                    </div>
+                </div>
+
+                <div class="calendar-sec">
+                    <div class="calendar">
+                        <div class="month">December</div>
+                        <div class="days">
+                            <div>Mon</div>
+                            <div>Tue</div>
+                            <div>Wed</div>
+                            <div>Thu</div>
+                            <div>Fri</div>
+                            <div>Sat</div>
+                            <div>Sun</div>
+                            <div class="dim">29</div>
+                            <div class="dim">30</div>
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                            <div>8</div>
+                            <div>9</div>
+                            <div>10</div>
+                            <div>11</div>
+                            <div>12</div>
+                            <div>13</div>
+                            <div>14</div>
+                            <div>15</div>
+                            <div>16</div>
+                            <div>17</div>
+                            <div>18</div>
+                            <div>19</div>
+                            <div>20</div>
+                            <div>21</div>
+                            <div>22</div>
+                            <div>23</div>
+                            <div>24</div>
+                            <div>25</div>
+                            <div>26</div>
+                            <div>27</div>
+                            <div>28</div>
+                            <div>29</div>
+                            <div>30</div>
+                            <div>31</div>
+                        </div>
+                    </div>
+                    <div class="security-bars">
+                        <div class="bar-label">External Threat Mitigation</div>
+                        <div class="bar">
+                            <div class="fill" style="width: 80%"></div>
+                        </div>
+                        <div class="bar-label">Private Data Secured</div>
+                        <div class="bar">
+                            <div class="fill" style="width: 95%"></div>
+                        </div>
+                        <div class="bar-label">Server Breach Risk</div>
+                        <div class="bar">
+                            <div class="fill low" style="width: 15%"></div>
+                        </div>
+                        <div class="bar-label">External Breach Risk</div>
+                        <div class="bar">
+                            <div class="fill low" style="width: 10%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SETTINGS SECTION -->
+        <div class="content-section" id="settings">
+            <div class="settings-page">
+                <h1>Settings</h1>
+
+                <div class="settings-layout">
+                    <!-- Left Column -->
+                    <div class="settings-left">
+                        <div class="setting-card">
+                            <h2>Change Password</h2>
+                            <div class="setting-item">
+                                <p class="label">Change correct pass</p>
+                                <p class="desc">Update your key regularly. A compromised passphrase means total loss of
+                                    anonymity.</p>
+                            </div>
+                            <div class="setting-item">
+                                <p class="label">Change panic pass</p>
+                                <p class="desc">Set a secret PIN to instantly wipe all critical data and delete the app
+                                    if you are detained.</p>
+                            </div>
+                        </div>
+
+                        <div class="setting-card">
+                            <h2>Account Security</h2>
+                            <div class="setting-item">
+                                <p class="label">Manage Verified Devices</p>
+                                <p class="desc">See all active devices. Immediately revoke access for any device that is
+                                    lost or seized by authorities.</p>
+                            </div>
+                            <div class="setting-item">
+                                <p class="label">Generate New Anonymous ID</p>
+                                <p class="desc">Create a completely new identity. This action cannot be reversed and
+                                    severs links to your old profile.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="settings-right">
+                        <div class="setting-card small">
+                            <h3>Data Purge</h3>
+                            <p>Execute a deep-level, irreversible wipe of all chat history and stored files from this
+                                device only.</p>
+                        </div>
+
+                        <div class="toggle-row">
+                            <span>Purge data on this device</span>
+                            <label class="switch">
+                                <input type="checkbox" id="purgeToggle">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="toggle-row">
+                            <span>Turn on DataSaver</span>
+                            <label class="switch">
+                                <input type="checkbox" id="dataSaverToggle">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ===== FEED SECTION ===== -->
+        <section id="feed" class="content-section">
+            <div class="feed-container">
+
+                <!-- Left Feed Sidebar -->
+                <aside class="feed-left">
+                    <h2>Feed</h2>
+                    <nav class="feed-nav">
+                        <p class="nav-item active">🏠 Home</p>
+                        <p class="nav-item">📈 Popular</p>
+                        <p class="nav-item">🖼️ All</p>
+                    </nav>
+
+                    <div class="feed-search">
+                        <input type="text" placeholder="search article">
+                    </div>
+
+                    <h3 class="feed-subtitle">Editing Houses</h3>
+                    <div class="feed-houses">
+                        <p>＋ Add house</p>
+                        <p>⊕ Join house</p>
+                        <div class="house-list">
+                            <div class="house-block"></div>
+                            <div class="house-block"></div>
+                            <div class="house-block"></div>
+                            <div class="house-block"></div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Middle Feed Content -->
+                <div class="feed-middle">
+                    <div class="feed-banner">
+                        <img src="./imgs/loki.png" alt="">
+                        <div class="feed-user">
+                            <img src="./imgs/user.png" alt="">
+                            <h1>l0k1</h1>
+                        </div>
+                        <button class="create-article">+ Create article</button>
+                    </div>
+
+                    <div class="feed-post">
+                        <p class="post-id">Q8-C3D9E2 <span>🕒 9:50</span></p>
+                        <img src="./imgs/banner.png" alt="">
+                        <p class="post-text">
+                            Thousands gathered in the downtown district today for the largest organized demonstration
+                            this quarter...
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Feed Sidebar -->
+                <aside class="feed-right">
+                    <button class="donate-btn">Donate</button>
+
+                    <div class="donation-list">
+                        <p><span class="highlight">Q8-C3D9E2</span> just donated 9 CPH</p>
+                        <p><span class="highlight">Q8-C3D9E2</span> just donated 24 CPH</p>
+                        <p><span class="highlight">Q8-C3D9E2</span> just donated 1 CPH</p>
+                        <p><span class="highlight">Q8-C3D9E2</span> just donated 7 CPH</p>
+                    </div>
+
+                    <div class="feed-info">
+                        <h4>Title</h4>
+                        <p>Description adasdasda Description adasdasda Description adasdasda Description adasdasda</p>
+                        <div class="feed-stats">
+                            <p>Total Members <span>890K</span></p>
+                            <p>Members Online <span class="online">120K</span></p>
+                            <p>Rank By Size <span>Top 2%</span></p>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+
+        <!-- CALENDAR SECTION -->
+        <div class="main calendar-page content-section" id="calendar">
+            <!-- top search bar -->
+            <div class="calendar-topbar">
+                <input type="text" placeholder="enter [eventname] to search..." class="calendar-search">
+                <button class="calendar-search-btn">Search event</button>
+                <button class="calendar-add">+</button>
+            </div>
+
+            <!-- main calendar + side events -->
+            <div class="calendar-layout">
+                <div class="calendar-grid">
+                    <div class="weekday">mon</div>
+                    <div class="weekday">tue</div>
+                    <div class="weekday">wed</div>
+                    <div class="weekday">thu</div>
+                    <div class="weekday">fri</div>
+                    <div class="weekday">sat</div>
+                    <div class="weekday">sun</div>
+
+                    <!-- Example days -->
+                    <div class="day dim">29</div>
+                    <div class="day dim">30</div>
+                    <div class="day">1</div>
+                    <div class="day">2</div>
+                    <div class="day">3</div>
+                    <div class="day dim">4</div>
+                    <div class="day dim">5</div>
+                    <div class="day">6</div>
+                    <div class="day">7</div>
+                    <div class="day">8</div>
+                    <div class="day">9</div>
+                    <div class="day">10</div>
+                    <div class="day dim">11</div>
+                    <div class="day dim">12</div>
+                    <div class="day">13</div>
+                    <div class="day">14</div>
+                    <div class="day">15</div>
+                    <div class="day">16 <span class="event">0400: Clandestine Drop</span></div>
+                    <div class="day">17 <span class="event">0000: Secure Comm Check</span></div>
+                    <div class="day dim">18</div>
+                    <div class="day dim">19</div>
+                    <div class="day">20</div>
+                    <div class="day">21</div>
+                    <div class="day">22</div>
+                    <div class="day">23</div>
+                    <div class="day">24</div>
+                    <div class="day dim">25</div>
+                    <div class="day dim">26</div>
+                    <div class="day">27</div>
+                    <div class="day">28</div>
+                    <div class="day">29 <span class="event">0200: Data Purge Protocol</span></div>
+                    <div class="day">30</div>
+                    <div class="day">31</div>
+                    <div class="day dim">1</div>
+                    <div class="day dim">2</div>
+                </div>
+
+                <div class="calendar-events">
+                    <div class="event-card">
+                        <h3 class="highlight">Clandestine Drop</h3>
+                        <p>Coordinates distributed via Q8-GATE01 at 0300. Maintain absolute radio silence until
+                            post-retrieval. Avoid all primary transit routes.</p>
+                    </div>
+                    <div class="event-card">
+                        <h3 class="highlight">Secure Comm Check</h3>
+                        <p>All aligned units to perform a system-wide Q8 check at 0000. Report any anomalies
+                            immediately.</p>
+                    </div>
+                    <div class="event-card">
+                        <h3 class="highlight">Cell 7 Briefing</h3>
+                        <p>Mandatory briefing for Cell 7 members. Topic: <em>Phase Beta</em> next steps. Access via
+                            encrypted audio stream on Q8 at 1800. Verification required.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <section id="inbox" class="content-section">
+  <div class="inbox-wrap">
+
+    <!-- Left: Inbox list -->
+    <aside class="inbox-list">
+      <div class="inbox-header">
+        <h2>Inbox</h2>
+        <div class="tabs">
+          <button class="tab active" data-filter="unread">Unread</button>
+          <button class="tab" data-filter="read">Read</button>
+        </div>
+      </div>
+
+      <div class="conversations" id="conversations">
+        <!-- Conversation items are inserted by JS; sample markup shown for reference -->
+        <!--
+        <div class="conv-item unread" data-id="q8-1f8c3a">
+          <div class="conv-id">Q8-1F8C3A</div>
+          <div class="conv-snippet">The package moved North an hour ago...</div>
+          <div class="time">5:26 PM</div>
+          <div class="badge">1</div>
+        </div>
+        -->
+      </div>
+
+      <div class="inbox-footer">
+        <div class="status">Q8-C3D9E2 <span class="online-dot"></span></div>
+      </div>
+    </aside>
+
+    <!-- Right: Chat view -->
+    <main class="chat-view">
+      <header class="chat-header">
+        <div class="chat-title">
+          <h3 id="chat-title">Q8-60B1A7</h3>
+          <span class="chat-sub">online • Today 5:26 PM</span>
+        </div>
+        <div class="chat-actions">
+          <button class="icon-btn">📞</button>
+          <button class="icon-btn">🎥</button>
+        </div>
+      </header>
+
+      <div class="chat-body" id="chat-body" tabindex="0">
+        <!-- messages inserted by JS -->
+      </div>
+
+      <div class="chat-input">
+        <button class="attach">＋</button>
+        <input id="message-input" type="text" placeholder="Type a message..." />
+        <button id="send-btn" class="send">➤</button>
+      </div>
+    </main>
+  </div>
+</section>
+
+    <script>
+        function copyID() {
+            navigator.clipboard.writeText("Q8-C3D9E2").then(() => {
+                alert("ID copied!");
+            });
+        }
+
+        // Icon switch mechanism
+        const icons = document.querySelectorAll('.sidebar .icon');
+        const sections = document.querySelectorAll('.content-section');
+
+        icons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                icons.forEach(i => i.classList.remove('active'));
+                icon.classList.add('active');
+
+                const target = icon.getAttribute('data-target');
+                sections.forEach(sec => {
+                    sec.classList.toggle('active', sec.id === target);
+                });
+            });
+        });
+        // ===== Inbox functionality & seeded messages =====
+(() => {
+  const conversationsData = [
+    {
+      id: "Q8-1F8C3A",
+      snippet: "The package moved North an hour ago...",
+      time: "5:26 PM",
+      unread: 1,
+      messages: [
+        { who: "other", text: "The package moved North an hour ago..." },
+        { who: "me", text: "Copy. Keep eyes on it." }
+      ]
+    },
+    {
+      id: "Q8-60B1A7",
+      snippet: "Are the aligned units ready for phase?",
+      time: "5:26 PM",
+      unread: 0,
+      messages: [
+        { who: "me", text: "Are the aligned units ready for Phase Beta at the designated Nexus point?" },
+        { who: "me", text: "Need confirmation of silent perimeter establishment by 0400" },
+        { who: "other", text: "Nexus has been secured for transfer" },
+        { who: "other", text: "The payload is arriving from the blind spot now" },
+        { who: "other", text: "Is the decryption key ready for transmission immediately upon arrival?" },
+        { who: "me", text: "Key is ready" },
+        { who: "me", text: "Proceed with the final stage now." }
+      ]
+    },
+    {
+      id: "Q8-4D5C92",
+      snippet: "LZ is clear. Awaiting the go signal",
+      time: "5:26 PM",
+      unread: 2,
+      messages: [
+        { who: "other", text: "LZ is clear. Awaiting the go signal" },
+        { who: "me", text: "Hold until green." }
+      ]
+    },
+    {
+      id: "Q8-E83F71",
+      snippet: "The watchers reported nothing unusual",
+      time: "5:26 PM",
+      unread: 0,
+      messages: [
+        { who: "other", text: "The watchers reported nothing unusual" }
+      ]
+    },
+  ];
+
+  const convContainer = document.getElementById('conversations');
+  const chatBody = document.getElementById('chat-body');
+  const chatTitle = document.getElementById('chat-title');
+  const messageInput = document.getElementById('message-input');
+  const sendBtn = document.getElementById('send-btn');
+  let currentConvId = conversationsData[0].id;
+
+  function renderConversationList(filter = 'all') {
+    convContainer.innerHTML = '';
+    conversationsData.forEach(conv => {
+      if (filter === 'unread' && !conv.unread) return;
+      if (filter === 'read' && conv.unread) return;
+      const item = document.createElement('div');
+      item.className = 'conv-item' + (conv.unread ? ' unread' : '');
+      item.dataset.id = conv.id;
+      item.innerHTML = `
+        <div>
+          <div class="conv-id">${conv.id}</div>
+          <div class="conv-snippet">${conv.snippet}</div>
+        </div>
+        <div>
+          <div class="time">${conv.time}</div>
+          ${conv.unread ? `<div class="badge">${conv.unread}</div>` : ''}
+        </div>
+      `;
+      item.addEventListener('click', () => {
+        openConversation(conv.id);
+        // mark as read visually
+        conv.unread = 0;
+        renderConversationList(currentFilter);
+      });
+      convContainer.appendChild(item);
+    });
+  }
+
+  function openConversation(id) {
+    const conv = conversationsData.find(c => c.id === id);
+    if (!conv) return;
+    currentConvId = id;
+    chatTitle.textContent = conv.id;
+    chatBody.innerHTML = '';
+    conv.messages.forEach(m => {
+      appendMessage(m.who === 'me' ? 'right' : 'left', m.text);
+    });
+    // scroll to bottom
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function appendMessage(side, text, meta = '') {
+    const row = document.createElement('div');
+    row.className = 'msg-row';
+    const bubble = document.createElement('div');
+    bubble.className = 'msg ' + side + ' bubble-compact';
+    bubble.innerText = text;
+    row.appendChild(bubble);
+    if (meta) {
+      const metaEl = document.createElement('span');
+      metaEl.className = 'msg-meta';
+      metaEl.textContent = meta;
+      row.appendChild(metaEl);
+    }
+    chatBody.appendChild(row);
+    chatBody.scrollTop = chatBody.scrollHeight + 200;
+  }
+
+  // send message from input
+  sendBtn.addEventListener('click', () => {
+    const text = messageInput.value.trim();
+    if (!text) return;
+    appendMessage('right', text);
+    // update conversation data
+    const conv = conversationsData.find(c => c.id === currentConvId);
+    conv.messages.push({ who: 'me', text });
+    messageInput.value = '';
+    simulateReply(conv);
+  });
+
+  messageInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') sendBtn.click();
+  });
+
+  // simple simulated reply (for demo)
+  function simulateReply(conv) {
+    setTimeout(() => {
+      const replies = [
+        "Acknowledged.",
+        "Copy that. Proceed.",
+        "Received. Standing by.",
+        "Key received. Transmit now.",
+        "Payload on site. Over."
+      ];
+      const reply = replies[Math.floor(Math.random() * replies.length)];
+      conv.messages.push({ who: 'other', text: reply });
+      if (conv.id === currentConvId) {
+        appendMessage('left', reply);
+      } else {
+        conv.unread = (conv.unread || 0) + 1;
+        renderConversationList(currentFilter);
+      }
+    }, 700 + Math.random() * 900);
+  }
+
+  // tabs
+  let currentFilter = 'all';
+  document.querySelectorAll('.tab').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      currentFilter = t.dataset.filter === 'unread' ? 'unread' : t.dataset.filter === 'read' ? 'read' : 'all';
+      renderConversationList(currentFilter);
+    });
+  });
+
+  // init
+  renderConversationList();
+  openConversation(currentConvId);
+
+})();
+
+    </script>
+</body>
+
+</html>

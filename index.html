@@ -27,7 +27,7 @@
             <p class="itm">about</p>
             <p class="itm">more</p>
         </div>
-        <div class="blog-login">
+        <div class="blog-login" id = "loginbtn">
             <img src="./imgs/login.svg" alt="">
             <p>login</p>
         </div>
@@ -62,9 +62,76 @@
         <div class="blog-fleft">
             <p>Want to stay updated on what's going on?</p>
         </div>
-        <div class="blog-fright">
+        <div class="blog-fright" id = "clickbtn">
             <p>Click here</p>
         </div>
     </div>
+    <div class="newsletter">
+        <div class="newsletter-main">
+            <span>Our Newsletter</span><br><br><br>
+            <p>
+                <strong>Hello User</strong><br>
+                <br>
+                We hope you had a fantastic week! Fall is officially here, and that means it's time to trade in those light summer salads for dishes that offer deep, comforting warmth and flavor. This week, we're celebrating the humble, yet powerful, ingredient that forms the foundation of so many great meals: the egg.<br>
+                <br>
+                <strong>🍳 Mastering the Omelette: Creamy, Not Crumbly</strong><br>
+                The omelette often gets a bad rap for being difficult, but it's really about finesse! Our latest article breaks down the three secrets to achieving that perfect, pale-yellow exterior and the incredibly creamy, custard-like interior—all without ever having to flip the pan!<br>
+                omeletterecipe.recipe.com<br>
+                <br>
+                <strong>Quick Tip:</strong> Don't forget to check out our list of Beyond Cheese fillings for inspiration. We’re currently obsessed with the savory Umami combo of organic mushrooms and caramelized shallots.<br>
+                <br>
+                <strong>✨ Clean Eating Corner: Organic in 5 Minutes</strong><br>
+                We believe that cooking with the purest ingredients shouldn't require complicated trips or endless prep time. This week, we highlighted a simple philosophy: Organic on the Go <br>
+                <br>
+                Our feature recipe is a five-minute wonder that showcases how much flavor you get when you choose clean, organic produce—no complex cooking required. It's the simplest way to hit the reset button on a busy day. <br>
+                organicrecipes.recipe.com <br>
+                <br>
+                <strong>A Note on Connection</strong><br>
+                Food is truly about connection—it’s how we share love, ideas, and comfort. We are always looking for ways to make our community stronger and ensure that the vital information and stories we share here get to everyone who needs them. <br>
+                Thank you, as always, for being part of our kitchen. We’ll be back next week with more seasonal recipes and cooking tips! <br>
+                Happy Cooking, <br>
+                The Team at nCrypt
+            </p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('clickbtn').addEventListener("click", () => {
+            document.getElementsByClassName("newsletter")[0].style.animation = "up 1s forwards"
+        })
+        document.getElementsByClassName('itm2')[0].addEventListener("click", () => {
+            document.getElementsByClassName("newsletter")[0].style.animation = "down 1s forwards"
+        })
+    </script>
+    <div class="blur">
+    </div>
+     <div class="blog-loginpage">
+            <form action="" id ="submit">
+                <input type="text" placeholder="Enter Email">
+                <input type="text" placeholder="Enter Password">
+                <input type="submit" value = "Join Our Newsletter">
+            </form>
+        </div>
+    <script>
+        const loginpage = document.getElementsByClassName("blog-loginpage")[0]
+        document.getElementsByClassName("blur")[0].style.display="none"
+        document.getElementById("loginbtn").addEventListener("click", () => {
+            document.getElementsByClassName("blur")[0].style.display="block";
+            loginpage.style.display="block";
+            document.getElementsByClassName("blur")[0].style.animation = "blurin 1s forwards";
+            loginpage.style.animation="blurin 1s forwards"
+        })
+        document.getElementsByClassName("blur")[0].addEventListener("click", () => {
+            document.getElementsByClassName("blur")[0].style.animation = "blurout 1s forwards";
+            loginpage.style.animation="blurout 1s forwards"
+            setTimeout(() => {
+                document.getElementsByClassName("blur")[0].style.display="none";
+                loginpage.style.display="none";
+            }, 1000);
+        })
+        document.getElementById("submit").addEventListener("submit", (e) => {
+            e.preventDefault();
+            window.location.href="/dashboard.html"
+        })
+    </script>
 </body>
 </html>
